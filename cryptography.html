@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <link href="styles.css" rel="stylesheet">
+        <title>Cryptography</title>
+    </head>
+
+    <nav class="navbar navbar-expand-lg custom-navbar child-navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cryptography.html">Cryptography</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="computerscience.html">Computer Science</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="music.html">Music</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="numbertheory.html">Number Theory</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <body>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card child-card">
+                <div class="card-body">
+                    <h3 class="card-title">Hash-Based Commitment</h3>
+                    <hr class="card-separator">
+                    <p class="card-text">
+                        Imagine a round of rock-paper-scissors played over text messages, whereby the two (or more)
+                        players must
+                        necessarily take turns throwing their signs. Say the one player is called Alpha and the other
+                        Beta. As the players cannot shoot
+                        their signs at the very same time, Alpha goes first and Beta follows next. <br><br>
+                        Now, if Alpha goes first, Beta can always win,
+                        since they need only pick out and send over the one sign that beats Alpha's
+                        every time.
+                        Needless to say, that is not a very fair or thrilling way to play. </p>One may wonder if a fair
+                    set up for the game is possible when the players cannot throw their signs in real time. Well, as the
+                    saying
+                    goes, where there is a will, there is a
+                    way. Alpha can commit to
+                    their sign and send it over to Beta, concealing it in such a manner that Beta is left unable to tell
+                    what it really stands for before they send
+                    over
+                    their own sign. Then, after (and only after) Beta sends over their sign does Alpha reveal their
+                    committed
+                    sign–one they can longer change. <br><br>
+
+                    Let's see how this can be done using a hash-based commitment scheme. Hashing is how Alpha "locks
+                    in"
+                    and commits to their chosen sign. Actually, Alpha hashes a concatentation of their chosen sign with
+                    a
+                    random
+                    salt value. </p><p>If Alpha picks
+                    scissors, Alpha sends Beta a hash of the concatenation of the word <i>scissors</i> with the chosen
+                    salt value. A longer
+                    salt value should make cracking the sign harder. For ease of demonstration, the range for the salt in this
+                    round is ten digits long, but in practice,
+                    the length would be much longer–long enough so as to make cracking infeasable in the average case.
+
+                    </p>
+
+                    \[
+                    \begin{aligned}
+                    \text{if } sign &= \texttt{SCISSORS} \\ \\
+                    \text{and }salt &= \texttt{9876543210} \\ \\
+                    \text{then }salt || sign &= \texttt{9876543210SCISSORS} \\ \\
+                    \end{aligned}
+                    \]
+
+                    Using a hash algorithm like the 256-bit Secure Hash Algorithm (SHA-256), Alpha hashes the
+                    concatenation.
+
+                    \[
+                    \text{SHA256(} \texttt{9876543210SCISSORS} \text{)} =
+                    \begin{gathered}
+                    \texttt{C1BBB4ECAC62B2A0} \\
+                    \texttt{48C90D2144680360} \\
+                    \texttt{3B059CD204321DFC} \\
+                    \texttt{818A89229C0FFE6E}
+                    \end{gathered}
+                    \]
+
+                    Alpha then sends over that hash digest over to Beta. This is the commitment phase. Once Alpha
+                    commits the hashed concatenation, they cannot change the sign and reveal a different one
+                    afterwards without Beta being able to
+                    tell
+                    unless Alpha finds another salt that, when concatenated with the changed sign, happens to collide
+                    with the first digest upon hashing. <br><br>Remember, a
+                    collision takes place when two
+                    input messages turn out to have the same hash digest. Owing to the pigeon-hole principle, collisions
+                    are
+                    unavoidable since hash function are many-to-one functions, and for every ouput value, there are
+                    bound to be many different
+                    input values that hash to the same digest.
+                    Nonetheless, with secure hash functions, intentional collisions should still be costly and
+                    time-consuming to actually find.
+
+                    <br><br>Thereupon Beta simply sends over their chosen sign in the clear. The message transcript
+                    looks like
+                    this:
+
+
+                    \[
+                    \begin{array}{@{}r@{\quad}l@{}}
+                    \text{Alpha:} &
+                    \begin{array}{@{}l@{}}
+                    \texttt{4C252B0D3F2CF6A4} \\
+                    \texttt{74874341A5EE8BB1} \\
+                    \texttt{A72AB5519537CA86} \\
+                    \texttt{B89058253453181A}
+                    \end{array} \
+
+                    \\ \\
+                    \text{Beta:} &
+                    \begin{array}{@{}l@{}}
+                    \texttt{ROCK}
+                    \end{array}
+                    \end{array}
+                    \]
+
+                    Now it is time for the revelation and verification phase. Alpha simply reveals their chosen
+                    sign along with the random salt, which Beta verifies by running it through the hash algorithm. Since
+                    Alpha has already chosen "scissors," Alpha cannot reveal a different
+                    sign without the corresponding
+                    hash digest changing as well. If
+                    Beta finds that the resulting hash digest matches the one Alpha sent at the first, Beta can trust
+                    Alpha's commitment to have been verified.
+
+                    \[
+                    \begin{array}{@{}r@{\quad}l@{}}
+                    \text{Alpha:} &
+                    \begin{array}{@{}l@{}}
+                    \texttt{4C252B0D3F2CF6A4} \\
+                    \texttt{74874341A5EE8BB1} \\
+                    \texttt{A72AB5519537CA86} \\
+                    \texttt{B89058253453181A}
+                    \end{array} \
+
+                    \\ \\
+                    \text{Beta:} &
+                    \begin{array}{@{}l@{}}
+                    \texttt{ROCK}
+                    \end{array}
+
+                    \\ \\
+                    \text{Alpha:} &
+                    \begin{array}{@{}l@{}}
+                    \texttt{9876543210SCISSORS}
+                    \end{array}
+                    \end{array}
+                    \]
+
+                    The only way for Alpha to have changed the sign before revealing it was if they had found another
+                    random
+                    salt value that, when
+                    concatenated with the different sign, happened to result in the same exact hash digest as that of
+                    the
+                    first
+                    commitment. No small feat. This would take considerable time, and
+                    in practice, the salt string would likely be much longer, possibly hundreds of digits long so as to
+                    make
+                    brute-force attempts to find a collision practically impossible.
+
+                    <br><br>To illustrate, if Alpha were to reveal "paper" instead, the hash value of the concatenation
+                    would be completely different than that of the first, and Beta would be able to tell that the sign
+                    was changed.
+
+                    \[
+                    \text{SHA256(}\texttt{9876543210PAPER}\text{)} =
+                    \begin{gathered}
+                    \texttt{6C0DF113616E7935} \\
+                    \texttt{A6A46AD4AC8E77C1} \\
+                    \texttt{8DAEF21AA7F8F598} \\
+                    \texttt{C3039ED999AF66C0}
+                    \end{gathered}
+                    \]
+
+                    On the flip side, Beta could also try to brute-force Alpha's commitment to reveal it before sending
+                    over
+                    their own sign. They could do so by hashing the concatenations of one of the three signs with all
+                    the possible permutations of the random salt until they happened to strike a match with the hash
+                    digest of
+                    Alpha's commitment. This would also take considerable time and effort.
+                    <br><br>
+
+                    As it turns out, no commitment scheme can be both perfectly concealing and perfectly binding. In
+                    practice, one property is therefore made perfect while the other is only guaranteed
+                    "computationally" secure against efficient cracking attempts.
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

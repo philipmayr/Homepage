@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <link href="styles.css" rel="stylesheet">
+        <title>Music</title>
+    </head>
+
+    <nav class="navbar navbar-expand-lg custom-navbar child-navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cryptography.html">Cryptography</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="computerscience.html">Computer Science</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="music.html">Music</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="numbertheory.html">Number Theory</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <body>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card child-card">
+                <div class="card-body">
+                    <h3 class="card-title">Equal Temperament</h3>
+                    <hr class="card-separator">
+                    <p class="card-text">Equal temperament is a tuning system that splits an octave into twelve \((12)\)
+                        "equally spaced out" semitones. The frequency, or pitch, of any tone is thus just as much
+                        higher-
+                        or lower-
+                        sounding than either of its two neighboring semitones as any other tone in the scale would be to
+                        a neighboring tone thereof. In other words, the
+                        proportional distance between any pair of neighboring pitches (such as A<sub>4</sub> and
+                        B<sub>4</sub>) is exactly the same as that of any other pair of pitches (say B<sub>3</sub> and
+                        C<sub>3</sub>). <br><br>This measure of pitchwise distance is found by taking the base frequency and multiplying it by the twelfth root of two
+                        \((
+                        \sqrt[12]{2}
+                        )\) to find the pitch of the next higher note in the scale. The advantage of
+                        equal tempered scales is that every scale can be transposed to any other scale without changing
+                        the harmonic proportions of any pair of notes. Equal temperament
+                        thus makes every scale have the same proportional distances between its notes as any other
+                        scale, unlike other
+                        tuning systems such as Pythagorean temperament. This makes key transitions in music less pointed
+                        or pronounced and allows for seamless transposition. This article shows
+                        how to calculate the frequencies of an equal tempered twelve-note scale.</p>
+                    <h5>First Steps</h5>
+                    <p>First we must set the frequency for the foundational note in the scale.
+                        Let's start with A<sub>4</sub>, the first A above middle C, and fix its pitch at 440 Hz. </p>
+
+                    \[ A_4 = 440 \text{ Hz} \]
+
+                    <p>"Hz" is short for "Hertz", and this means that the actual sound wave of A<sub>4</sub> goes
+                        through one "cycle"
+                        (oscillation) 440 times per second. Here "cycle" means that the sound wave starts out at
+                        equilibrium, reaches its peak amplitude, goes back down to equilibrium, drops to its trough
+                        amplitude,
+                        and then goes back up to equilibrium again. That would be one whole "cycle", and at 440 Hz, the
+                        tone goes
+                        through 440 of those cycles per second. Recall that "amplitude" is how high (and low) the wave
+                        drops from its initial starting point (equilibrium), and "frequency" is how rapidly, that is,
+                        how many times per second, a sound wave goes through a full up and down cycle (oscillation) per
+                        second. Amplitude also tells how loud or soft the pitch is, and frequency tells how high-pitched
+                        or low-pitched it is. For example, blowing a high-pitched whistle sounds a tone of both high amplitude and high
+                        frequency, whereas striking the lowest key on a piano sounds a tone of both low amplitude
+                        and low frequency. Note that amplitude means power, energy, loudness, and that frequency means pitch.
+                    </p>
+                    <p>The octave interval is calculated by doubling (or halving) the base pitch frequency.
+
+                    </p>
+
+                    \[
+                    \begin{aligned}
+                    \text{if } A_4 &= 440 \text{ Hz} \\ \\
+                    \text{and } 440 \text{ Hz} \cdot 2 &= 880 \text{ Hz} \\ \\
+                    \text{then } A_5 &= 880 \text{ Hz}
+                    \end{aligned}
+                    \]
+
+                    <p>Likewise, to find the frequency of A<sub>3</sub> (an octave below A<sub>4</sub>), the
+                        frequency of A<sub>4</sub> is halved.</p>
+
+                    \[
+                    \begin{aligned}
+                    \text{if } A_4 &= 440 \text{ Hz} \\ \\
+                    \text{and } 440 \text{ Hz} \div 2 &= 220 \text{ Hz} \\ \\
+                    \text{then } A_3 &= 220 \text{ Hz}
+                    \end{aligned}
+                    \]
+
+                    <h5>Next Step</h5>
+
+                    <p>Let's find out the exact frequencies in Hertz of each of the twelve notes between A<sub>4</sub> and
+                        A<sub>5</sub>.
+                        We already know that the frequencies of those twelve notes lie between 440 Hz and 880 Hz.
+                        For A♯<sub>4</sub> and B♭<sub>4</sub>, the next note above A<sub>4</sub>, we must multiply the
+                        frequency of A<sub>4</sub> by the twelfth root of two (\( \sqrt[12]{2} \)). However, it may be
+                        easier to think in terms of fractional exponents. The twelfth root of two is the same as two
+                        raised
+                        to the one-over-twelfth power.</p>
+
+                    \[ \sqrt[12]{2} = 2^{1/12} \]
+
+                    <p>So the frequency of each note in the scale is simply \( 2^{\frac{1}{12}} \) times higher than the
+                        note it comes after.</p>
+
+                    \[
+                    \begin{aligned}
+                    \text{if } A_4 &= 440 \text{ Hz} \\ \\
+                    \text{and } 440 \text{ Hz} \cdot 2^{1/12} &\approx 466.163 \text{ Hz} \\ \\
+                    \text{then } A\sharp_4/B\flat_4 &\approx 466.163 \text{ Hz}
+                    \end{aligned}
+                    \]
+
+                    <p> The frequency of A♯<sub>4</sub>/B♭<sub>4</sub> is only approximate because the twelfth root of
+                        two is irrational. It cannot be written down either as a whole number or as a rational number
+                        (one
+                        that can be written as a fraction), so multiplying it by any other number also makes for an
+                        irrational number. </p>
+
+                    \[ \sqrt[12]{2} = 2^{1/12} \approx 1.059463094\text{…} \]
+
+                    <p>In reality, the series of digits after the decimal point (known as the
+                        mantissa) could go on for ever and ever. Here we approximate the value to three digits of
+                        precision, which should be more than enough for most applications.
+                    </p>
+
+                    <p>At this point, we have calculated the frequencies of three out of twelve notes in the scale:
+                        A<sub>4</sub>, A♯<sub>4</sub>/B♭<sub>4</sub>, and A<sub>5</sub>. </p>
+
+
+
+
+
+                    \[
+                    \boxed{
+                    \begin{array}{|c|c c|}
+                    \hline
+                    A_4 & 440\phantom{.000} & \text{Hz} \\ \hline
+                    A^\sharp_4 / B^\flat_4 & 466.163 & \text{Hz} \\ \hline
+                    A_5 & 880\phantom{.000} & \text{Hz} \\ \hline
+                    \end{array}
+                    }
+                    \]
+
+
+
+
+
+
+
+                    <p>Now it seems there are two ways to calculate the next note. The first way is to change the
+                        base frequency to that of A<sub>4</sub>/B<sub>4</sub>, which is approximately 466.163, and
+                        multiply the same by the twelfth root of two, just like we did with A<sub>4</sub>.
+
+                        \[
+                        \begin{aligned}
+                        \text{if } A^\sharp_4 / B^\flat_4 &\approx 466.163 \text{ Hz} \\ \\
+                        \text{and } 466.163 \text{ Hz} \cdot 2^{1/12} &\approx 494.379 \text{ Hz} \\ \\
+                        \text{then } B_4 &\approx 494.379 \text{ Hz}
+                        \end{aligned}
+                        \]
+
+                    <p>However, this way an already rounded number is multiplied by an approximation of the twelfth root
+                        of two, another rounded number. So we are dealing with two rounded numbers and losing precision.
+                        This loss of precision only accumulates as one goes up the scale, changing the base frequency of
+                        the multiplicand to a rounded number for every note. Instead, it is better to keep multiplying
+                        the base frequency, 440, (A<sub>4</sub>) by increasing twelth powers of two. So for the next
+                        note at a whole tone interval, the base frequency is multiplied by two to the two-over-twelfth
+                        power, and we raise the numerator of the fraction base-two power by one for every additional
+                        semitone of separation from the base note. </p>
+
+                    \[
+                    \begin{aligned}
+                    \text{if } A_4 &= 440 \text{ Hz} \\ \\
+                    \text{and } 440 \text{ Hz} \cdot 2^{2/12} &\approx 493.883 \text{ Hz} \\ \\
+                    \text{then } B_4 &\approx 493.883 \text{ Hz}
+                    \end{aligned}
+                    \]
+
+                    <h5>All Steps</h5>
+
+
+                    <p>We can keep use the base frequency to calculate the frequency of all the notes in the octave at
+                        once.</p>
+
+
+
+
+
+
+
+                    \[
+                    \boxed{
+                    \begin{array}{|c|r@{}c@{}l c|}
+                    \hline
+                    A_4 & 440 & \cdot & 2^{0/12} & = 440\phantom{.000}\ \text{Hz} \\ \hline
+                    A^\sharp_4 / B^\flat_4 & 440 & \cdot & 2^{1/12} & \approx 466.163\ \text{Hz} \\ \hline
+                    B_5 & 440 & \cdot & 2^{2/12} & \approx 493.883\ \text{Hz} \\ \hline
+                    C_5 & 440 & \cdot & 2^{3/12} & \approx 523.251\ \text{Hz} \\ \hline
+                    C^\sharp_5 / D^\flat_5 & 440 & \cdot & 2^{4/12} & \approx 554.365\ \text{Hz} \\ \hline
+                    D_5 & 440 & \cdot & 2^{5/12} & \approx 587.330\ \text{Hz} \\ \hline
+                    D^\sharp_5 / E^\flat_5 & 440 & \cdot & 2^{6/12} & \approx 622.254\ \text{Hz} \\ \hline
+                    E_5 & 440 & \cdot & 2^{7/12} & \approx 659.255\ \text{Hz} \\ \hline
+                    F_5 & 440 & \cdot & 2^{8/12} & \approx 698.456\ \text{Hz} \\ \hline
+                    F^\sharp_5 / G^\flat_5 & 440 & \cdot & 2^{9/12} & \approx 739.989\ \text{Hz} \\ \hline
+                    G_5 & 440 & \cdot & 2^{10/12} & \approx 783.991\ \text{Hz} \\ \hline
+                    G^\sharp_5 / A^\flat_5 & 440 & \cdot & 2^{11/12} & \approx 830.609\ \text{Hz} \\ \hline
+                    A_5 & 440 & \cdot & 2^{12/12} & = 880\phantom{.000}\ \text{Hz} \\ \hline
+                    \end{array}
+                    }
+                    \]
+
+
+                    <p>Of course, most of the exponents can be reduced and simplified, though this makes no difference
+                        in the
+                        calculations.</p>
+
+                    \[
+                    \begin{aligned}
+                    2^{0/12} &= 2^{0} = 1 \\ \\
+                    2^{2/12} &= 2^{1/6} \\ \\
+                    2^{3/12} &= 2^{1/4} \\ \\
+                    2^{4/12} &= 2^{1/3} \\ \\
+                    2^{6/12} &= 2^{1/2} \\ \\
+                    2^{8/12} &= 2^{2/3} \\ \\
+                    2^{9/12} &= 2^{3/4} \\ \\
+                    2^{10/12} &= 2^{5/6} \\ \\
+                    2^{12/12} &= 2^{1} = 2 \\ \\
+                    \end{aligned}
+                    \]
+
+                    <p>So a simplified chart shows as follows.</p>
+
+                    \[
+                    \boxed{
+                    \begin{array}{|c|r@{}c@{}l c|}
+                    \hline
+                    A_4 & 440 & \cdot & 1 & = 440\phantom{.000}\ \text{Hz} \\ \hline
+                    A^\sharp_4 / B^\flat_4 & 440 & \cdot & 2^{1/12} & \approx 466.163\ \text{Hz} \\ \hline
+                    B_5 & 440 & \cdot & 2^{1/6} & \approx 493.883\ \text{Hz} \\ \hline
+                    C_5 & 440 & \cdot & 2^{1/4} & \approx 523.251\ \text{Hz} \\ \hline
+                    C^\sharp_5 / D^\flat_5 & 440 & \cdot & 2^{4/12} & \approx 554.365\ \text{Hz} \\ \hline
+                    D_5 & 440 & \cdot & 2^{5/12} & \approx 587.330\ \text{Hz} \\ \hline
+                    D^\sharp_5 / E^\flat_5 & 440 & \cdot & 2^{1/2} & \approx 622.254\ \text{Hz} \\ \hline
+                    E_5 & 440 & \cdot & 2^{7/12} & \approx 659.255\ \text{Hz} \\ \hline
+                    F_5 & 440 & \cdot & 2^{2/3} & \approx 698.456\ \text{Hz} \\ \hline
+                    F^\sharp_5 / G^\flat_5 & 440 & \cdot & 2^{3/4} & \approx 739.989\ \text{Hz} \\ \hline
+                    G_5 & 440 & \cdot & 2^{5/6} & \approx 783.991\ \text{Hz} \\ \hline
+                    G^\sharp_5 / A^\flat_5 & 440 & \cdot & 2^{11/12} & \approx 830.609\ \text{Hz} \\ \hline
+                    A_5 & 440 & \cdot & 2 & = 880\phantom{.000}\ \text{Hz} \\ \hline
+                    \end{array}
+                    }
+                    \]
+
+                    <p>Now to keep going we would take A<sub>5</sub> at 880 Hz and start over by multiplying it by
+                        increasing twelfth powers of two until we got to A<sub>6</sub> at 1760 Hz, and so on. To get the
+                        pitches of all the notes of the piano this way, we can just start with A<sub>0</sub> at 27.5 Hz,
+                        the lowest note on a piano.</p>
+
+
+
+                    <div class="container my-4">
+
+                        <!-- OCTAVE 0: A0–G♯0, base 27.5 Hz -->
+                        <button class="btn btn-secondary golden-btn mb-2" data-bs-toggle="collapse"
+                            data-bs-target="#oct0">
+                            Octave 0 (A<sub>0</sub>–G♯<sub>0</sub>)
+                        </button>
+                        <div id="oct0" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_0 & 27.5 & \cdot & 2^{0/12} & = \phantom{0}27.5\phantom{00}\ \text{Hz} \\ \hline
+                            A^\sharp_0/B^\flat_0 & 27.5 & \cdot & 2^{1/12} & \approx \phantom{0}29.135\ \text{Hz} \\
+                            \hline
+                            B_0 & 27.5 & \cdot & 2^{2/12} & \approx \phantom{0}30.868\ \text{Hz} \\ \hline
+                            C_0 & 27.5 & \cdot & 2^{3/12} & \approx \phantom{0}32.703\ \text{Hz} \\ \hline
+                            C^\sharp_0/D^\flat_0 & 27.5 & \cdot & 2^{4/12} & \approx \phantom{0}34.648\ \text{Hz} \\
+                            \hline
+                            D_0 & 27.5 & \cdot & 2^{5/12} & \approx \phantom{0}36.708\ \text{Hz} \\ \hline
+                            D^\sharp_0/E^\flat_0 & 27.5 & \cdot & 2^{6/12} & \approx \phantom{0}38.891\ \text{Hz} \\
+                            \hline
+                            E_0 & 27.5 & \cdot & 2^{7/12} & \approx \phantom{0}41.203\ \text{Hz} \\ \hline
+                            F_0 & 27.5 & \cdot & 2^{8/12} & \approx \phantom{0}43.654\ \text{Hz} \\ \hline
+                            F^\sharp_0/G^\flat_0 & 27.5 & \cdot & 2^{9/12} & \approx \phantom{0}46.249\ \text{Hz} \\
+                            \hline
+                            G_0 & 27.5 & \cdot & 2^{10/12} & \approx \phantom{0}48.999\ \text{Hz} \\ \hline
+                            G^\sharp_0/A^\flat_0 & 27.5 & \cdot & 2^{11/12} & \approx \phantom{0}51.913\ \text{Hz} \\
+                            \hline
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+
+                        <!-- OCTAVE 1: A1–G♯1, base 55 Hz -->
+                        <button class="btn btn-dark golden-btn mb-2" data-bs-toggle="collapse" data-bs-target="#oct1">
+                            Octave 1 (A<sub>1</sub>–G♯<sub>1</sub>)
+                        </button>
+                        <div id="oct1" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_1 & 55 & \cdot & 2^{0/12} & = \phantom{0}55\phantom{.000}\ \text{Hz} \\ \hline
+                            A^\sharp_1/B^\flat_1 & 55 & \cdot & 2^{1/12} & \approx \phantom{0}58.270\ \text{Hz} \\
+                            \hline
+                            B_1 & 55 & \cdot & 2^{2/12} & \approx \phantom{0}61.736\ \text{Hz} \\ \hline
+                            C_2 & 55 & \cdot & 2^{3/12} & \approx \phantom{0}65.406\ \text{Hz} \\ \hline
+                            C^\sharp_2/D^\flat_2 & 55 & \cdot & 2^{4/12} & \approx \phantom{0}69.296\ \text{Hz} \\
+                            \hline
+                            D_2 & 55 & \cdot & 2^{5/12} & \approx \phantom{0}73.416\ \text{Hz} \\ \hline
+                            D^\sharp_2/E^\flat_2 & 55 & \cdot & 2^{6/12} & \approx \phantom{0}77.782\ \text{Hz} \\
+                            \hline
+                            E_2 & 55 & \cdot & 2^{7/12} & \approx \phantom{0}82.407\ \text{Hz} \\ \hline
+                            F_2 & 55 & \cdot & 2^{8/12} & \approx \phantom{0}87.307\ \text{Hz} \\ \hline
+                            F^\sharp_2/G^\flat_2 & 55 & \cdot & 2^{9/12} & \approx \phantom{0}92.499\ \text{Hz} \\
+                            \hline
+                            G_2 & 55 & \cdot & 2^{10/12} & \approx \phantom{0}97.999\ \text{Hz} \\ \hline
+                            G^\sharp_2/A^\flat_2 & 55 & \cdot & 2^{11/12} & \approx 103.826\ \text{Hz} \\ \hline
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+
+                        <!-- OCTAVE 2: A2–G♯2, base 110 Hz -->
+                        <button class="btn btn-secondary golden-btn mb-2" data-bs-toggle="collapse"
+                            data-bs-target="#oct2">
+                            Octave 2 (A<sub>2</sub>–G♯<sub>2</sub>)
+                        </button>
+                        <div id="oct2" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_2 & 110 & \cdot & 2^{0/12} & = 110\phantom{.000}\ \text{Hz} \\ \hline
+                            A^\sharp_2/B^\flat_2 & 110 & \cdot & 2^{1/12} & \approx 116.541\ \text{Hz} \\ \hline
+                            B_2 & 110 & \cdot & 2^{2/12} & \approx 123.471\ \text{Hz} \\ \hline
+                            C_3 & 110 & \cdot & 2^{3/12} & \approx 130.813\ \text{Hz} \\ \hline
+                            C^\sharp_3/D^\flat_3 & 110 & \cdot & 2^{4/12} & \approx 138.591\ \text{Hz} \\ \hline
+                            D_3 & 110 & \cdot & 2^{5/12} & \approx 146.832\ \text{Hz} \\ \hline
+                            D^\sharp_3/E^\flat_3 & 110 & \cdot & 2^{6/12} & \approx 155.563\ \text{Hz} \\ \hline
+                            E_3 & 110 & \cdot & 2^{7/12} & \approx 164.814\ \text{Hz} \\ \hline
+                            F_3 & 110 & \cdot & 2^{8/12} & \approx 174.614\ \text{Hz} \\ \hline
+                            F^\sharp_3/G^\flat_3 & 110 & \cdot & 2^{9/12} & \approx 184.997\ \text{Hz} \\ \hline
+                            G_3 & 110 & \cdot & 2^{10/12} & \approx 195.998\ \text{Hz} \\ \hline
+                            G^\sharp_3/A^\flat_3 & 110 & \cdot & 2^{11/12} & \approx 207.652\ \text{Hz} \\ \hline
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+
+                        <!-- OCTAVE 3: A3–G♯3, base 220 Hz -->
+                        <button class="btn btn-dark golden-btn mb-2" data-bs-toggle="collapse" data-bs-target="#oct3">
+                            Octave 3 (A<sub>3</sub>–G♯<sub>3</sub>)
+                        </button>
+                        <div id="oct3" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_3 & 220 & \cdot & 2^{0/12} & = 220\phantom{.000}\ \text{Hz} \\ \hline
+                            A^\sharp_3/B^\flat_3 & 220 & \cdot & 2^{1/12} & \approx 233.082\ \text{Hz} \\ \hline
+                            B_3 & 220 & \cdot & 2^{2/12} & \approx 246.942\ \text{Hz} \\ \hline
+                            C_4 & 220 & \cdot & 2^{3/12} & \approx 261.626\ \text{Hz} \\ \hline
+                            C^\sharp_4/D^\flat_4 & 220 & \cdot & 2^{4/12} & \approx 277.183\ \text{Hz} \\ \hline
+                            D_4 & 220 & \cdot & 2^{5/12} & \approx 293.665\ \text{Hz} \\ \hline
+                            D^\sharp_4/E^\flat_4 & 220 & \cdot & 2^{6/12} & \approx 311.127\ \text{Hz} \\ \hline
+                            E_4 & 220 & \cdot & 2^{7/12} & \approx 329.628\ \text{Hz} \\ \hline
+                            F_4 & 220 & \cdot & 2^{8/12} & \approx 349.228\ \text{Hz} \\ \hline
+                            F^\sharp_4/G^\flat_4 & 220 & \cdot & 2^{9/12} & \approx 369.994\ \text{Hz} \\ \hline
+                            G_4 & 220 & \cdot & 2^{10/12} & \approx 391.995\ \text{Hz} \\ \hline
+                            G^\sharp_4/A^\flat_4 & 220 & \cdot & 2^{11/12} & \approx 415.305\ \text{Hz} \\ \hline
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+
+                        <!-- OCTAVE 4: A4–G♯4, base 440 Hz -->
+                        <button class="btn btn-secondary golden-btn mb-2" data-bs-toggle="collapse"
+                            data-bs-target="#oct4">
+                            Octave 4 (A<sub>4</sub>–G♯<sub>4</sub>)
+                        </button>
+                        <div id="oct4" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_4 & 440 & \cdot & 2^{0/12} & = 440\phantom{.000}\ \text{Hz} \\ \hline
+                            A^\sharp_4/B^\flat_4 & 440 & \cdot & 2^{1/12} & \approx 466.163\ \text{Hz} \\ \hline
+                            B_4 & 440 & \cdot & 2^{2/12} & \approx 493.883\ \text{Hz} \\ \hline
+                            C_5 & 440 & \cdot & 2^{3/12} & \approx 523.251\ \text{Hz} \\ \hline
+                            C^\sharp_5/D^\flat_5 & 440 & \cdot & 2^{4/12} & \approx 554.365\ \text{Hz} \\ \hline
+                            D_5 & 440 & \cdot & 2^{5/12} & \approx 587.330\ \text{Hz} \\ \hline
+                            D^\sharp_5/E^\flat_5 & 440 & \cdot & 2^{6/12} & \approx 622.254\ \text{Hz} \\ \hline
+                            E_5 & 440 & \cdot & 2^{7/12} & \approx 659.255\ \text{Hz} \\ \hline
+                            F_5 & 440 & \cdot & 2^{8/12} & \approx 698.456\ \text{Hz} \\ \hline
+                            F^\sharp_5/G^\flat_5 & 440 & \cdot & 2^{9/12} & \approx 739.989\ \text{Hz} \\ \hline
+                            G_5 & 440 & \cdot & 2^{10/12} & \approx 783.991\ \text{Hz} \\ \hline
+                            G^\sharp_5/A^\flat_5 & 440 & \cdot & 2^{11/12} & \approx 830.609\ \text{Hz} \\ \hline
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+
+                        <!-- OCTAVE 5: A5–G♯5, base 880 Hz -->
+                        <button class="btn btn-dark golden-btn mb-2" data-bs-toggle="collapse" data-bs-target="#oct5">
+                            Octave 5 (A<sub>5</sub>–G♯<sub>5</sub>)
+                        </button>
+                        <div id="oct5" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_5 & 880 & \cdot & 2^{0/12} & = 880\phantom{.000}\ \text{Hz} \\ \hline
+                            A^\sharp_5/B^\flat_5 & 880 & \cdot & 2^{1/12} & \approx 932.328\ \text{Hz} \\ \hline
+                            B_5 & 880 & \cdot & 2^{2/12} & \approx 987.767\ \text{Hz} \\ \hline
+                            C_6 & 880 & \cdot & 2^{3/12} & \approx 1046.502\ \text{Hz} \\ \hline
+                            C^\sharp_6/D^\flat_6 & 880 & \cdot & 2^{4/12} & \approx 1108.731\ \text{Hz} \\ \hline
+                            D_6 & 880 & \cdot & 2^{5/12} & \approx 1174.659\ \text{Hz} \\ \hline
+                            D^\sharp_6/E^\flat_6 & 880 & \cdot & 2^{6/12} & \approx 1244.508\ \text{Hz} \\ \hline
+                            E_6 & 880 & \cdot & 2^{7/12} & \approx 1318.510\ \text{Hz} \\ \hline
+                            F_6 & 880 & \cdot & 2^{8/12} & \approx 1396.913\ \text{Hz} \\ \hline
+                            F^\sharp_6/G^\flat_6 & 880 & \cdot & 2^{9/12} & \approx 1479.978\ \text{Hz} \\ \hline
+                            G_6 & 880 & \cdot & 2^{10/12} & \approx 1567.982\ \text{Hz} \\ \hline
+                            G^\sharp_6/A^\flat_6 & 880 & \cdot & 2^{11/12} & \approx 1661.219\ \text{Hz} \\ \hline
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+
+                        <!-- OCTAVE 6: A6–G♯6, base 1760 Hz -->
+                        <button class="btn btn-secondary golden-btn mb-2" data-bs-toggle="collapse"
+                            data-bs-target="#oct6">
+                            Octave 6 (A<sub>6</sub>–G♯<sub>6</sub>)
+                        </button>
+                        <div id="oct6" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_6 & 1760 & \cdot & 2^{0/12} & = 1760\phantom{.000}\ \text{Hz} \\ \hline
+                            A^\sharp_6/B^\flat_6 & 1760 & \cdot & 2^{1/12} & \approx 1864.655\ \text{Hz} \\ \hline
+                            B_6 & 1760 & \cdot & 2^{2/12} & \approx 1975.533\ \text{Hz} \\ \hline
+                            C_7 & 1760 & \cdot & 2^{3/12} & \approx 2093.005\ \text{Hz} \\ \hline
+                            C^\sharp_7/D^\flat_7 & 1760 & \cdot & 2^{4/12} & \approx 2217.461\ \text{Hz} \\ \hline
+                            D_7 & 1760 & \cdot & 2^{5/12} & \approx 2349.318\ \text{Hz} \\ \hline
+                            D^\sharp_7/E^\flat_7 & 1760 & \cdot & 2^{6/12} & \approx 2489.016\ \text{Hz} \\ \hline
+                            E_7 & 1760 & \cdot & 2^{7/12} & \approx 2637.020\ \text{Hz} \\ \hline
+                            F_7 & 1760 & \cdot & 2^{8/12} & \approx 2793.826\ \text{Hz} \\ \hline
+                            F^\sharp_7/G^\flat_7 & 1760 & \cdot & 2^{9/12} & \approx 2959.955\ \text{Hz} \\ \hline
+                            G_7 & 1760 & \cdot & 2^{10/12} & \approx 3135.963\ \text{Hz} \\ \hline
+                            G^\sharp_7/A^\flat_7 & 1760 & \cdot & 2^{11/12} & \approx 3322.438\ \text{Hz} \\ \hline
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+
+                        <!-- OCTAVE 7: A7–G♯7, base 3520 Hz -->
+                        <button class="btn btn-dark golden-btn mb-2" data-bs-toggle="collapse" data-bs-target="#oct7">
+                            Octave 7 (A<sub>7</sub>–C<sub>8</sub>)
+                        </button>
+                        <div id="oct7" class="collapse">
+
+
+                            \[
+                            \boxed{
+                            \begin{array}{|c|r@{}c@{}l c|}
+                            \hline
+                            A_7 & 3520 & \cdot & 2^{0/12} & = 3520\phantom{.000}\ \text{Hz} \\ \hline
+                            A^\sharp_7/B^\flat_7 & 3520 & \cdot & 2^{1/12} & \approx 3729.310\ \text{Hz} \\ \hline
+                            B_7 & 3520 & \cdot & 2^{2/12} & \approx 3951.066\ \text{Hz} \\ \hline
+                            C_8 & 3520 & \cdot & 2^{3/12} & \approx 4186.009\ \text{Hz} \\ \hline
+
+                            \end{array}
+                            }
+                            \]
+
+
+                        </div>
+                        <br><br>
+
+                        <p>Alternatively, one could also begin with a base pitch multiplicand and just keep adding on to
+                            the numerator in the twelfth power of two multiplier, without ever changing the base.</p>
+
+
+
+                        \[
+                        \text{if } A_4 = 440 \text{ Hz}
+                        \]
+
+
+
+
+
+                        \[
+                        \text{then}
+                        \]
+
+
+
+
+
+                        \[
+                        \begin{aligned}
+                        A^\sharp_5/B^\flat_5 &= 440 \cdot 2^{13/12} \text{ Hz} \\
+                        B_5 &= 440 \cdot 2^{14/12} \text{ Hz} \\
+                        C_5 &= 440 \cdot 2^{15/12} \text{ Hz} \\
+                        C^\sharp_5/D^\flat_5 &= 440 \cdot 2^{16/12} \text{ Hz} \\
+                        D_5 &= 440 \cdot 2^{17/12} \text{ Hz} \\
+                        D^\sharp_5/E^\flat_5 &= 440 \cdot 2^{18/12} \text{ Hz} \\
+                        E_5 &= 440 \cdot 2^{19/12} \text{ Hz}
+                        \end{aligned}
+                        \]
+
+
+
+
+
+                        \[
+                        \text{and so on...}
+                        \]
+
+
+
+                    </div>
+
+                    <h5>Any Step</h5>
+
+
+                    <p>Thus the formula can be generalized to find the frequency of any note \( x \) semitones above a
+                        base
+                        frequency by multiplying the base frequency \( f_0 \) by two raised to the power of \( x \)
+                        twelfths.</p>
+
+
+
+
+
+                    \[
+
+
+                    f(x) = f_0 \cdot 2^{x/12}
+
+                    \]
+
+
+
+
+
+
+
+
+
+
+
+                    <p>And going in the other direction, to find the frequency of a note \( x \) semitones below a base
+                        frequency, the base frequency \( f_0 \) is multiplied by two raised to the power of negative \(
+                        x \)
+                        twelfths.
+                    </p>
+
+                    \[
+
+
+                    f(x) = f_0 \cdot 2^{-x/12}
+
+                    \]
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <script>
+            const t = Array.from({ length: 1000 }, (_, i) => i / 1000);
+            const amplitude = 0.15;
+            const y = t.map(v => amplitude * Math.sin(2 * Math.PI * v));
+
+            Plotly.newPlot('sinePlot', [{
+                x: t,
+                y: y,
+                type: 'scatter',
+                mode: 'lines',
+                line: { color: '#00ccff', width: 3 }
+            }], {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                xaxis: { title: 'Time (seconds)' },
+                yaxis: { title: 'Amplitude' },
+                margin: { t: 40, r: 20, l: 50, b: 40 }
+            });
+        </script>
+    </body>
+
+</html>

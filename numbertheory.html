@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <link href="styles.css" rel="stylesheet">
+        <title>Number Theory</title>
+    </head>
+
+    <nav class="navbar navbar-expand-lg custom-navbar child-navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cryptography.html">Cryptography</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="computerscience.html">Computer Science</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="music.html">Music</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="numbertheory.html">Number Theory</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <body>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card child-card">
+                <div class="card-body">
+                    <h3 class="card-title">Binary Modular Exponentiation</h3>
+                    <hr class="card-separator">
+                    <p class="card-text"> Binary modular exponentation is the standard way to find modular powers in \(
+                        O(\log_2 b) \) time, where \( b \) is the index (exponent). Modular exponentiation is one of the
+                        core cryptographic primitives and is widely used above all in asymmetric cryptosystems.</p>
+
+                    \begin{gather*}
+                    a^b \bmod m \\ \\
+                    a \text{ for base, } b \text{ for index, and } m \text{ for modulus} \\ \\
+                    \end{gather*}
+
+                    <p>
+                        This means that the number of steps it takes to find the power
+                        in no wise exceeds that of the binary logarithm of the index \( b \). Or in other words, the
+                        number of steps
+                        is at most the same as the count of binary digits (bits) in
+                        the exponent. More precisely, the </p>
+
+                    \[
+                    \begin{aligned}
+                    \text{if } b = 37773 \\ \\
+                    \text{and } a^{37773} \bmod m \\ \\
+                    \text{then } O(\log_2 37773) \approx 16 \\ \\
+                    \end{aligned}
+                    \]
+
+                    <p>The algorithm goes through each of the digits of the binary representation of the exponent and
+                        either just squares the running power or also multiplies it by the base as well after
+                        squaring it. That is why another name for it is the square-and-multiply algorithm. For every set
+                        bit
+                        (\(1\)) in the exponent, the running power is both squared and multiplied by the base; for every
+                        unset bit (\(0\)), the running power is squared only. Thus with each bit the running power is
+                        squared, but the running power is also multiplied if the bit is set</p>
+
+                    <p>Here is the binary representation of \(37773\):</p>
+
+                    \[
+
+                    37773 = (1001001101011101)_2
+
+                    \]
+
+                    <p>Let us count the number of \(1\)'s to find out how many times the running power is to be
+                        multiplied by the base. We count nine \(1\)'s, so nine multiplications will be carried out in
+                        addition to \(16\) squarings, one squaring for each bit, whether it be set or not.</p>
+
+                    <p>
+
+                        Now, let us choose \(3\) for the base \(a\), and \(97\) for the modulus \(m\).</p>
+                    </p>
+
+                    \[
+                    3^{37773} \bmod 97 \\ \\
+                    \]
+
+                    <p>Writing the index in binary we have:</p>
+
+                    \[
+                    3^{1001001101011101_2} \bmod 97 \\ \\
+                    \]
+
+                    <p>The first step is to take the first bit and check whether it is set or unset. Here we use the
+                        right-to-left method, starting with the least-significant bit. The LSB is set, so the base is
+                        first squared then multiplied by the base as well.
+                        Upon each multiplication or squaring
+                        the running power is reduced (modulated) by the modulus. This helps keep intermediate steps
+                        small and manageable.
+                    </p>
+
+                    \[
+                    \begin{aligned}
+
+                    \text{Step 1}&: 100100110101110\mathbf{1}_2 \\
+                    \\
+                    \textit{SQUARE}&: (3^{2} = 9) \bmod 97 \equiv \mathbf{9} \\
+                    \textit{MULTIPLY}&: (9 \cdot 3 = 27) \bmod 97 \equiv \mathbf{27} \\
+                    \\
+
+                    \text{Step 2}&: 10010011010111\mathbf{0}1_2 \\
+                    \\
+                    \textit{SQUARE}&: (27^{2} = 729) \bmod 97 \equiv \mathbf{50} \\
+                    \\
+
+                    \text{Step 3}&: 1001001101011\mathbf{1}01_2 \\
+                    \\
+                    \textit{SQUARE}&: (50^{2} = 2500) \bmod 97 \equiv \mathbf{78} \\
+                    \textit{MULTIPLY}&: (78 \cdot 3 = 234) \bmod 97 \equiv \mathbf{40} \\
+                    \\
+
+                    \text{Step 4}&: 100100110101\mathbf{1}101_2 \\
+                    \\
+                    \textit{SQUARE}&: (40^{2} = 1600) \bmod 97 \equiv \mathbf{48} \\
+                    \\
+
+                    \text{Step 5}&: 10010011010\mathbf{1}1101_2 \\
+                    \\
+                    \textit{SQUARE}&: (48^{2} = 2304) \bmod 97 \equiv \mathbf{73} \\
+                    \textit{MULTIPLY}&: (73 \cdot 3 = 219) \bmod 97 \equiv \mathbf{25} \\
+                    \\
+
+                    \text{Step 6}&: 1001001101\mathbf{0}11101_2 \\
+                    \\
+                    \textit{SQUARE}&: (25^{2} = 625) \bmod 97 \equiv \mathbf{43} \\
+                    \\
+
+                    \text{Step 7}&: 100100110\mathbf{1}011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (43^{2} = 1849) \bmod 97 \equiv \mathbf{4} \\
+                    \textit{MULTIPLY}&: (4 \cdot 3 = 12) \bmod 97 \equiv \mathbf{12} \\
+                    \\
+
+                    \text{Step 8}&: 10010011\mathbf{0}1011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (12^{2} = 144) \bmod 97 \equiv \mathbf{47} \\
+                    \\
+
+                    \text{Step 9}&: 1001001\mathbf{1}01011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (47^{2} = 2209) \bmod 97 \equiv \mathbf{75} \\
+                    \textit{MULTIPLY}&: (75 \cdot 3 = 225) \bmod 97 \equiv \mathbf{31} \\
+                    \\
+
+                    \text{Step 10}&: 100100\mathbf{1}101011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (31^{2} = 961) \bmod 97 \equiv \mathbf{90} \\
+                    \textit{MULTIPLY}&: (90 \cdot 3 = 270) \bmod 97 \equiv \mathbf{76} \\
+                    \\
+
+                    \text{Step 11}&: 10010\mathbf{0}1101011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (76^{2} = 5776) \bmod 97 \equiv \mathbf{50} \\
+                    \\
+
+                    \text{Step 12}&: 1001\mathbf{0}01101011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (50^{2} = 2500) \bmod 97 \equiv \mathbf{78} \\
+                    \\
+
+                    \text{Step 13}&: 100\mathbf{1}001101011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (78^{2} = 6084) \bmod 97 \equiv \mathbf{73} \\
+                    \textit{MULTIPLY}&: (73 \cdot 3 = 219) \bmod 97 \equiv \mathbf{25} \\
+                    \\
+
+                    \text{Step 14}&: 10\mathbf{0}1001101011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (25^{2} = 625) \bmod 97 \equiv \mathbf{43} \\
+                    \\
+
+                    \text{Step 15}&: 1\mathbf{0}01001101011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (43^{2} = 1849) \bmod 97 \equiv \mathbf{4} \\
+                    \\
+
+                    \text{Step 16}&: \mathbf{1}001001101011101_2 \\
+                    \\
+                    \textit{SQUARE}&: (4^{2} = 16) \bmod 97 \equiv \mathbf{16} \\
+                    \textit{MULTIPLY}&: (16 \cdot 3 = 48) \bmod 97 \equiv \mathbf{48}
+
+                    \end{aligned}
+                    \]
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

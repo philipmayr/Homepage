@@ -1,0 +1,95 @@
+body {
+    background-image: url("./images/forest.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* .bg-background-tertiary {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+} */
+
+nav {
+    width: calc(100vw * 0.618);      /* golden ratio width */
+    margin: auto auto 0 auto;        /* center + space above */
+    margin-top: calc(100vh * 0.382 * 0.618);
+    padding: 16px 24px;              /* internal padding */
+    background: rgba(255, 255, 255, 0.318);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.318);
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.child-navbar {
+    --golden-margin: calc(100vh * 0.382 * 0.382 * 0.382);
+
+    margin-top: var(--golden-margin);
+    margin-bottom: var(--golden-margin);
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+.card {
+    margin: auto auto 0 auto;
+    margin-bottom: calc(100vh * 0.618);
+    aspect-ratio: 1.618 / 1;
+    background: rgba(255, 255, 255, 0.318);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.318);
+}
+
+.child-card {
+    width: calc(100vw * 0.618);
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    flex-direction: column;
+}
+
+.separator {
+    pointer-events: none;
+    user-select: none;
+    /* padding: 0 12px; */
+    font-size: 1.2rem;
+    opacity: 0.618;
+    vertical-align: middle;
+    line-height: 1.75;
+    display: inline-block;
+}
+
+.card-title {
+    text-align: center;
+    /* margin-bottom: 0.5rem; */
+}
+
+.card-separator {
+    width: 61.8%;
+    /* margin: auto auto 1.618rem auto; centered line */
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.golden-btn {
+    width: 61.8%;
+    margin-left: auto;
+    margin-right: auto;
+  }
