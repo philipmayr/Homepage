@@ -13,6 +13,29 @@ body {
     padding: 20px;
 } */
 
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    background: transparent;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-image: url("./images/forest.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 nav {
     width: calc(100vw * 0.618);      /* golden ratio width */
     margin: auto auto 0 auto;        /* center + space above */
