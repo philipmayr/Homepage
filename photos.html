@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+        <link href="styles.css" rel="stylesheet">
+        <title>Photos</title>
+    </head>
+
+    <nav class="navbar navbar-expand-lg custom-navbar child-navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cryptography.html">Cryptography</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="musictheory.html">Music Theory</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="numbertheory.html">Number Theory</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="photos.html">Photos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <body>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card child-card">
+                <div class="card-body">
+                    <h3 class="card-title">Photos</h3>
+                    <hr class="card-separator">
+                    <div class="photo-grid">
+                        <div class="photo-preview"><img src="photos/sabbath.webp" data-full="photos/sabbath.webp"
+                                alt="Sabbath">
+                        </div>
+                        <div class="photo-preview"><img src="photos/loch.webp" data-full="photos/loch.webp" alt="Loch">
+                        </div>
+                        <div class="photo-preview"><img src="photos/hilltop.webp" data-full="photos/hilltop.webp"
+                                alt="Hilltop">
+                        </div>
+                        <div class="photo-preview"><img src="photos/deer.webp" data-full="photos/deer.webp" alt="Deer">
+                        </div>
+                        <div class="photo-preview"><img src="photos/mount.webp" data-full="photos/mount.webp"
+                                alt="Mount">
+                        </div>
+                        <div class="photo-preview"><img src="photos/path.webp" data-full="photos/path.webp" alt="Path">
+                        </div>
+                        <div class="photo-preview"><img src="photos/napa.webp" data-full="photos/napa.webp" alt="Napa">
+                        </div>
+                        <div class="photo-preview"><img src="photos/moon.webp" data-full="photos/moon.webp" alt="Moon">
+                        </div>
+                        <div class="photo-preview"><img src="photos/orion.webp" data-full="photos/orion.webp"
+                                alt="Orion">
+                        </div>
+                        <div class="photo-preview"><img src="photos/sea.webp" data-full="photos/sea.webp" alt="Sea">
+                        </div>
+                        <div class="photo-preview"><img src="photos/wisp.webp" data-full="photos/wisp.webp" alt="Wisp">
+                        </div>
+                        <div class="photo-preview"><img src="photos/bow.webp" data-full="photos/bow.webp" alt="Bow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content bg-transparent border-0">
+                    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+
+                    <img id="fullPhoto" class="img-fluid rounded" alt="">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const photoModal = new bootstrap.Modal(
+                document.getElementById("photoModal")
+            );
+
+            document.querySelectorAll(".photo-preview img").forEach((preview) => {
+                preview.addEventListener("click", () => {
+                    const fullPhoto = document.getElementById("fullPhoto");
+
+                    fullPhoto.src = preview.dataset.full;
+                    fullPhoto.alt = preview.alt;
+
+                    photoModal.show();
+                });
+            });
+        </script>
+    </body>
+
+</html>
