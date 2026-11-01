@@ -38,22 +38,22 @@
                         <a class="nav-link active" href="cryptography.html">Cryptography</a>
                     </li>
 
-                    <!-- <li class="nav-item separator">𐫱</li> -->
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" href="computerscience.html">Computer Science</a>
-                    </li> -->
-
                     <li class="nav-item separator">𐫱</li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="music.html">Music</a>
+                        <a class="nav-link active" href="musictheory.html">Music Theory</a>
                     </li>
 
                     <li class="nav-item separator">𐫱</li>
 
                     <li class="nav-item">
                         <a class="nav-link active" href="numbertheory.html">Number Theory</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="photos.html">Photos</a>
                     </li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@
         <div class="d-flex justify-content-center align-items-center">
             <div class="card child-card">
                 <div class="card-body">
-                    <h3 class="card-title">Equal Temperament</h3>
+                    <h3 class="card-title">Twelve-Tone Equal Temperament</h3>
                     <hr class="card-separator">
                     <p class="card-text">Equal temperament is a tuning system that splits an octave into twelve \((12)\)
                         "equally spaced out" semitones. The frequency, or pitch, of any tone is thus just as much
@@ -72,9 +72,12 @@
                         or lower-
                         sounding than either of its two neighboring semitones as any other tone in the scale would be to
                         a neighboring tone thereof. In other words, the
-                        proportional distance between any pair of neighboring pitches (such as A<sub>4</sub> and
-                        B<sub>4</sub>) is exactly the same as that of any other pair of pitches (say B<sub>3</sub> and
-                        C<sub>3</sub>). <br><br>This measure of pitchwise distance is found by taking the base frequency and multiplying it by the twelfth root of two
+                        proportional distance between any pair of neighboring half-step separated pitches (such as
+                        E<sub>4</sub> and
+                        F<sub>4</sub>) is exactly the same as that of any other half-step separated pair of pitches (say
+                        B<sub>3</sub> and
+                        C<sub>3</sub>). <br><br>This measure of pitchwise distance is found by taking the base frequency
+                        and multiplying it by the twelfth root of two
                         \((
                         \sqrt[12]{2}
                         )\) to find the pitch of the next higher note in the scale. The advantage of
@@ -102,9 +105,11 @@
                         drops from its initial starting point (equilibrium), and "frequency" is how rapidly, that is,
                         how many times per second, a sound wave goes through a full up and down cycle (oscillation) per
                         second. Amplitude also tells how loud or soft the pitch is, and frequency tells how high-pitched
-                        or low-pitched it is. For example, blowing a high-pitched whistle sounds a tone of both high amplitude and high
+                        or low-pitched it is. For example, blowing a high-pitched whistle sounds a tone of both high
+                        amplitude and high
                         frequency, whereas striking the lowest key on a piano sounds a tone of both low amplitude
-                        and low frequency. Note that amplitude means power, energy, loudness, and that frequency means pitch.
+                        and low frequency. Note that amplitude means power, energy, loudness, and that frequency means
+                        pitch.
                     </p>
                     <p>The octave interval is calculated by doubling (or halving) the base pitch frequency.
 
@@ -131,7 +136,8 @@
 
                     <h5>Next Step</h5>
 
-                    <p>Let's find out the exact frequencies in Hertz of each of the twelve notes between A<sub>4</sub> and
+                    <p>Let's find out the exact frequencies in Hertz of each of the twelve notes between A<sub>4</sub>
+                        and
                         A<sub>5</sub>.
                         We already know that the frequencies of those twelve notes lie between 440 Hz and 880 Hz.
                         For A♯<sub>4</sub> and B♭<sub>4</sub>, the next note above A<sub>4</sub>, we must multiply the
@@ -169,10 +175,6 @@
                     <p>At this point, we have calculated the frequencies of three out of twelve notes in the scale:
                         A<sub>4</sub>, A♯<sub>4</sub>/B♭<sub>4</sub>, and A<sub>5</sub>. </p>
 
-
-
-
-
                     \[
                     \boxed{
                     \begin{array}{|c|c c|}
@@ -183,12 +185,6 @@
                     \end{array}
                     }
                     \]
-
-
-
-
-
-
 
                     <p>Now it seems there are two ways to calculate the next note. The first way is to change the
                         base frequency to that of A<sub>4</sub>/B<sub>4</sub>, which is approximately 466.163, and
@@ -221,15 +217,8 @@
 
                     <h5>All Steps</h5>
 
-
                     <p>We can keep use the base frequency to calculate the frequency of all the notes in the octave at
                         once.</p>
-
-
-
-
-
-
 
                     \[
                     \boxed{
@@ -251,7 +240,6 @@
                     \end{array}
                     }
                     \]
-
 
                     <p>Of course, most of the exponents can be reduced and simplified, though this makes no difference
                         in the
@@ -299,8 +287,6 @@
                         pitches of all the notes of the piano this way, we can just start with A<sub>0</sub> at 27.5 Hz,
                         the lowest note on a piano.</p>
 
-
-
                     <div class="container my-4">
 
                         <!-- OCTAVE 0: A0–G♯0, base 27.5 Hz -->
@@ -309,7 +295,6 @@
                             Octave 0 (A<sub>0</sub>–G♯<sub>0</sub>)
                         </button>
                         <div id="oct0" class="collapse">
-
 
                             \[
                             \boxed{
@@ -336,7 +321,6 @@
                             }
                             \]
 
-
                         </div>
 
                         <!-- OCTAVE 1: A1–G♯1, base 55 Hz -->
@@ -344,7 +328,6 @@
                             Octave 1 (A<sub>1</sub>–G♯<sub>1</sub>)
                         </button>
                         <div id="oct1" class="collapse">
-
 
                             \[
                             \boxed{
@@ -370,7 +353,6 @@
                             }
                             \]
 
-
                         </div>
 
                         <!-- OCTAVE 2: A2–G♯2, base 110 Hz -->
@@ -379,7 +361,6 @@
                             Octave 2 (A<sub>2</sub>–G♯<sub>2</sub>)
                         </button>
                         <div id="oct2" class="collapse">
-
 
                             \[
                             \boxed{
@@ -401,7 +382,6 @@
                             }
                             \]
 
-
                         </div>
 
                         <!-- OCTAVE 3: A3–G♯3, base 220 Hz -->
@@ -409,7 +389,6 @@
                             Octave 3 (A<sub>3</sub>–G♯<sub>3</sub>)
                         </button>
                         <div id="oct3" class="collapse">
-
 
                             \[
                             \boxed{
@@ -431,7 +410,6 @@
                             }
                             \]
 
-
                         </div>
 
                         <!-- OCTAVE 4: A4–G♯4, base 440 Hz -->
@@ -440,7 +418,6 @@
                             Octave 4 (A<sub>4</sub>–G♯<sub>4</sub>)
                         </button>
                         <div id="oct4" class="collapse">
-
 
                             \[
                             \boxed{
@@ -462,7 +439,6 @@
                             }
                             \]
 
-
                         </div>
 
                         <!-- OCTAVE 5: A5–G♯5, base 880 Hz -->
@@ -470,7 +446,6 @@
                             Octave 5 (A<sub>5</sub>–G♯<sub>5</sub>)
                         </button>
                         <div id="oct5" class="collapse">
-
 
                             \[
                             \boxed{
@@ -492,7 +467,6 @@
                             }
                             \]
 
-
                         </div>
 
                         <!-- OCTAVE 6: A6–G♯6, base 1760 Hz -->
@@ -501,7 +475,6 @@
                             Octave 6 (A<sub>6</sub>–G♯<sub>6</sub>)
                         </button>
                         <div id="oct6" class="collapse">
-
 
                             \[
                             \boxed{
@@ -523,7 +496,6 @@
                             }
                             \]
 
-
                         </div>
 
                         <!-- OCTAVE 7: A7–G♯7, base 3520 Hz -->
@@ -531,7 +503,6 @@
                             Octave 7 (A<sub>7</sub>–C<sub>8</sub>)
                         </button>
                         <div id="oct7" class="collapse">
-
 
                             \[
                             \boxed{
@@ -546,30 +517,19 @@
                             }
                             \]
 
-
                         </div>
                         <br><br>
 
                         <p>Alternatively, one could also begin with a base pitch multiplicand and just keep adding on to
                             the numerator in the twelfth power of two multiplier, without ever changing the base.</p>
 
-
-
                         \[
                         \text{if } A_4 = 440 \text{ Hz}
                         \]
 
-
-
-
-
                         \[
                         \text{then}
                         \]
-
-
-
-
 
                         \[
                         \begin{aligned}
@@ -583,46 +543,24 @@
                         \end{aligned}
                         \]
 
-
-
-
-
                         \[
                         \text{and so on...}
                         \]
 
-
-
                     </div>
 
                     <h5>Any Step</h5>
-
 
                     <p>Thus the formula can be generalized to find the frequency of any note \( x \) semitones above a
                         base
                         frequency by multiplying the base frequency \( f_0 \) by two raised to the power of \( x \)
                         twelfths.</p>
 
-
-
-
-
                     \[
-
 
                     f(x) = f_0 \cdot 2^{x/12}
 
                     \]
-
-
-
-
-
-
-
-
-
-
 
                     <p>And going in the other direction, to find the frequency of a note \( x \) semitones below a base
                         frequency, the base frequency \( f_0 \) is multiplied by two raised to the power of negative \(
@@ -632,36 +570,12 @@
 
                     \[
 
-
                     f(x) = f_0 \cdot 2^{-x/12}
 
                     \]
-
                 </div>
             </div>
         </div>
-
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-        <script>
-            const t = Array.from({ length: 1000 }, (_, i) => i / 1000);
-            const amplitude = 0.15;
-            const y = t.map(v => amplitude * Math.sin(2 * Math.PI * v));
-
-            Plotly.newPlot('sinePlot', [{
-                x: t,
-                y: y,
-                type: 'scatter',
-                mode: 'lines',
-                line: { color: '#00ccff', width: 3 }
-            }], {
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                xaxis: { title: 'Time (seconds)' },
-                yaxis: { title: 'Amplitude' },
-                margin: { t: 40, r: 20, l: 50, b: 40 }
-            });
-        </script>
     </body>
 
 </html>
