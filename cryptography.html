@@ -38,22 +38,22 @@
                         <a class="nav-link active" href="cryptography.html">Cryptography</a>
                     </li>
 
-                    <!-- <li class="nav-item separator">𐫱</li> -->
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" href="computerscience.html">Computer Science</a>
-                    </li> -->
-
                     <li class="nav-item separator">𐫱</li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="music.html">Music</a>
+                        <a class="nav-link active" href="musictheory.html">Music Theory</a>
                     </li>
 
                     <li class="nav-item separator">𐫱</li>
 
                     <li class="nav-item">
                         <a class="nav-link active" href="numbertheory.html">Number Theory</a>
+                    </li>
+
+                    <li class="nav-item separator">𐫱</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="photos.html">Photos</a>
                     </li>
                 </ul>
             </div>
@@ -64,40 +64,49 @@
         <div class="d-flex justify-content-center align-items-center">
             <div class="card child-card">
                 <div class="card-body">
-                    <h3 class="card-title">Hash-Based Commitment</h3>
+                    <h3 class="card-title">Hash-Based Commitment Scheme</h3>
                     <hr class="card-separator">
                     <p class="card-text">
-                        Imagine a round of rock-paper-scissors played over text messages, whereby the two (or more)
+                        Imagine a round of Rock Paper Scissors played over text messages, whereby two
                         players must
                         necessarily take turns throwing their signs. Say the one player is called Alpha and the other
                         Beta. As the players cannot shoot
-                        their signs at the very same time, Alpha goes first and Beta follows next. <br><br>
+                        their signs at the very same time, one player must go first and the other follow. <br><br>
                         Now, if Alpha goes first, Beta can always win,
-                        since they need only pick out and send over the one sign that beats Alpha's
-                        every time.
-                        Needless to say, that is not a very fair or thrilling way to play. </p>One may wonder if a fair
-                    set up for the game is possible when the players cannot throw their signs in real time. Well, as the
+                        for they only need to choose the sign that beats Alpha's sign.
+                        Needless to say, that is not a very exciting or fair way to play the game. One wonders if a fair
+                        set up is possible when players cannot throw their signs in real time. </p>Well, as the
                     saying
                     goes, where there is a will, there is a
                     way. Alpha can commit to
-                    their sign and send it over to Beta, concealing it in such a manner that Beta is left unable to tell
-                    what it really stands for before they send
-                    over
-                    their own sign. Then, after (and only after) Beta sends over their sign does Alpha reveal their
+                    their sign using a commitment scheme and send over their commitment to Beta, concealing their sign
+                    in such manner that Beta cannot tell
+                    what it really stands for. Then, only after Beta sends over their own chosen sign does Alpha reveal
+                    their
                     committed
-                    sign–one they can longer change. <br><br>
+                    sign–one they can longer change after getting to know Beta's chosen sign. <br><br>
 
-                    Let's see how this can be done using a hash-based commitment scheme. Hashing is how Alpha "locks
+                    Let us see how this can be carried out using a hash-based commitment scheme. Hash algorithms are
+                    simply many-to-few functions. If you are not familiar with hashing, understand that what follows may
+                    be difficult to grasp. Hashing is how Alpha "locks
                     in"
                     and commits to their chosen sign. Actually, Alpha hashes a concatentation of their chosen sign with
                     a
                     random
-                    salt value. </p><p>If Alpha picks
-                    scissors, Alpha sends Beta a hash of the concatenation of the word <i>scissors</i> with the chosen
-                    salt value. A longer
-                    salt value should make cracking the sign harder. For ease of demonstration, the range for the salt in this
-                    round is ten digits long, but in practice,
-                    the length would be much longer–long enough so as to make cracking infeasable in the average case.
+                    salt value. The reason a salt value is used is that if Alpha were to hash nothing but their chosen
+                    sign–and there are only three possible signs to choose from–Beta could simply hash all three signs
+                    and see which digest matches up with Alpha's. The salt value is added so there should be far too
+                    many combinations to brute-force in reasonable time. At the end of a round, when Alpha's commitment
+                    is revealed, the salt value is thrown out. What really matters is the concealed sign.</p>
+                    <p>Now, if Alpha picks
+                        scissors, Alpha sends Beta a hash of the concatenation of the word <i>scissors</i> with the
+                        chosen
+                        salt value. A longer
+                        salt value should make cracking the sign harder. For ease of demonstration, the range for the
+                        salt in this
+                        round is ten digits long, but in practice,
+                        the length would have to be long enough so as to make cracking infeasable in the average case.
+                        This depends on the computations resources available to the players.
 
                     </p>
 
@@ -110,7 +119,8 @@
                     \]
 
                     Using a hash algorithm like the 256-bit Secure Hash Algorithm (SHA-256), Alpha hashes the
-                    concatenation.
+                    concatenation. Note that the hash digest is encoded in hexadecimal (base-16) to save space–the
+                    digest really is just an ordinary number.
 
                     \[
                     \text{SHA256(} \texttt{9876543210SCISSORS} \text{)} =
@@ -122,7 +132,8 @@
                     \end{gathered}
                     \]
 
-                    Alpha then sends over that hash digest over to Beta. This is the commitment phase. Once Alpha
+                    Alpha then sends over that hash digest over to Beta. This marks the end of the commitment phase.
+                    Once Alpha
                     commits the hashed concatenation, they cannot change the sign and reveal a different one
                     afterwards without Beta being able to
                     tell
