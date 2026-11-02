@@ -156,3 +156,12 @@ nav {
         gap: 6px;
     }
 }
+
+.photo-preview {
+    background: transparent;
+}
+
+.photo-preview img {
+    display: block;
+    background: transparent;
+}
