@@ -174,3 +174,21 @@ nav {
 .photo-preview img.loaded {
     opacity: 1;
 }
+
+.table,
+.table th,
+.table td {
+    background-color: rgba(255, 255, 255, 0.333) !important;
+}
+
+.table th {
+    background-color: rgba(255, 255, 255, 0.333) !important;
+}
+
+.table {
+    --bs-table-border-color: rgba(255, 255, 255, 0.677);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 61.8%;
+    margin: 0 auto; /* center it */
+}
