@@ -190,5 +190,49 @@ nav {
     border-radius: 12px;
     overflow: hidden;
     width: 61.8%;
-    margin: 0 auto; /* center it */
+    margin: 0 auto;
+    /* center it */
+}
+
+.accordion-button {
+    background: rgba(255, 255, 255, 0.667);
+    color: inherit;
+}
+
+.accordion-button:not(.collapsed) {
+    background: rgba(255, 255, 255, 0.667);
+    color: inherit;
+
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.333);
+}
+
+.accordion-item {
+    background: transparent;
+}
+
+.accordion-body {
+    background: rgba(255, 255, 255, 0.333);
+}
+
+.recipe-card {
+    aspect-ratio: auto;
+    width: 61.8%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.recipe-card>.card-body {
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+.recipe-card {
+    margin-top: auto;
+    margin-bottom: auto;
 }
