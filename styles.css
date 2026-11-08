@@ -236,3 +236,44 @@ nav {
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.recipe-card ul {
+    list-style: none;
+    padding-left: 1.618rem;
+}
+
+.recipe-card ul li::before {
+    content: "⟡ ";
+    opacity: 0.667;
+}
+
+.recipe-card ol {
+    list-style: none;
+    counter-reset: recipe-step;
+
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.recipe-card li {
+    margin-bottom: 0.5rem;
+}
+
+.recipe-card ol li {
+    counter-increment: recipe-step;
+
+    display: flex;
+    align-items: flex-start;
+}
+
+.recipe-card ol li::before {
+    content: counter(recipe-step, upper-roman) ".";
+
+    width: 3.236rem; /* φ²-ish */
+    flex-shrink: 0;
+
+    text-align: right;
+    padding-right: 0.618rem;
+
+    opacity: 0.667;
+}
